@@ -1,0 +1,25 @@
+﻿@using SecondWeather.Components.Theme
+@inherits LayoutComponentBase
+
+<MudThemeProvider Theme="ColorTheme.AppTheme(primaryColorBasedOnWeather, darkMode)" IsDarkMode="darkMode" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudStack Row Spacing="1">
+            <MudIcon Icon="@Icons.Material.Filled.LocationOn" />
+            <MudText>Petrovice</MudText>
+        </MudStack>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen">
+        <AppNavMenu />
+    </MudDrawer>
+    <MudMainContent Style=@($"min-height:100vh; background:linear-gradient(to bottom, {primaryColorBasedOnWeather} , {primaryColorBasedOnWeatherGradient})")>
+        <MudContainer Class="py-2">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>

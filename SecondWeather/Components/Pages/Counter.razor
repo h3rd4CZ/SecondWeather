@@ -1,0 +1,23 @@
+﻿@page "/counter"
+@using Android.App
+@using Android.OS
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="IncrementCount">Click me</MudButton>
+
+@foreach (var i in Enumerable.Range(1, 50))
+{
+    <MudAlert Variant="Variant.Outlined" Severity="Severity.Success">This is success alert</MudAlert>
+}
+
+@code {
+    private int currentCount = 0;
+        
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

@@ -86,3 +86,15 @@ h1:focus {
         padding-left: env(safe-area-inset-left);
     }
 }
+
+.scrollbarless::-webkit-scrollbar{
+    display:none;
+}
+
+.min-height-full {
+    min-height: 100vh;
+}
+
+.default-color {
+    background-color: #5C6BC0;
+}

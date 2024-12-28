@@ -1,7 +1,30 @@
 ﻿@page "/"
+@inject ApplicationDbContext Db
+@using Microsoft.EntityFrameworkCore
+@using SecondWeather.Components.Weather
+@using SecondWeather.Data.Data
 
-<h2>Hello, world!</h2>
+<MudStack Row Justify="Justify.SpaceBetween">
+    <MudStack>
+        <MudText Typo="Typo.h1">2°</MudText>
+    </MudStack>
 
-<MudPaper Elevation="0" Class="pa-4" Style="background-color:rgba(0,0,0, .1)">
-    Text
+    <img width="128" height="128" src="/images/weather/icons/cloudy-day-2.svg" />
+</MudStack>
+
+<MudPaper Elevation="0" Class="pa-2 rounded-lg" Style="background-color:rgba(0,0,0, .1)">
+    
 </MudPaper>
+
+@foreach (var log in Db.Logs.ToList())
+{
+    <MudStack Class="py-2">
+        <MudText Class="mud-text-secondary">@log.Date</MudText>
+        <MudText>@log.Message</MudText>
+    </MudStack>
+}  
+
+@code
+{
+
+}

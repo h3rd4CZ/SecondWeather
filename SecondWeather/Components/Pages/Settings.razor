@@ -1,0 +1,32 @@
+﻿@page "/settings"
+
+
+<MudTextField Value=@(subKey.Value) T="string" DebounceInterval="1000" ValueChanged="@(async val => await subKeyChanged(val))" Label="Subscription key" Variant="Variant.Text"></MudTextField>
+
+<MudText Class="mt-4" Typo="Typo.subtitle1">Notifikace týden</MudText>
+<MudStack Row Justify="Justify.SpaceBetween">
+
+    <MudTimePicker PickerVariant="PickerVariant.Dialog" Time=@(!string.IsNullOrWhiteSpace(notificationWorkWeekFrom.Value) ? TimeSpan.Parse(notificationWorkWeekFrom.Value) : TimeSpan.Zero)
+                   TimeChanged="@(async newFrom => await notificationWorkWeekFromChanged(newFrom))"
+                   Label="Od"></MudTimePicker>
+
+    <MudTimePicker PickerVariant="PickerVariant.Dialog" Time=@(!string.IsNullOrWhiteSpace(notificationWorkWeekTo.Value) ? TimeSpan.Parse(notificationWorkWeekTo.Value) : TimeSpan.Zero)
+                   TimeChanged="@(async newTo => await notificationWorkWeekToChanged(newTo))"
+                   Label="Do"></MudTimePicker>
+</MudStack>
+
+<MudText Class="mt-4" Typo="Typo.subtitle1">Notifikace víkend</MudText>
+<MudStack Row Justify="Justify.SpaceBetween">
+
+    <MudTimePicker PickerVariant="PickerVariant.Dialog" Time=@(!string.IsNullOrWhiteSpace(notificationWeekendFrom.Value) ? TimeSpan.Parse(notificationWeekendFrom.Value) : TimeSpan.Zero)
+                   TimeChanged="@(async newFrom => await notificationWeekendFromChanged(newFrom))"
+                   Label="Od"></MudTimePicker>
+
+    <MudTimePicker PickerVariant="PickerVariant.Dialog" Time=@(!string.IsNullOrWhiteSpace(notificationWeekendTo.Value) ? TimeSpan.Parse(notificationWeekendTo.Value) : TimeSpan.Zero)
+                   TimeChanged="@(async newTo => await notificationWeekendToChanged(newTo))"
+                   Label="Do"></MudTimePicker>
+</MudStack>
+
+
+
+

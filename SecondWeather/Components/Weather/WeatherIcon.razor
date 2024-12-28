@@ -1,0 +1,34 @@
+﻿
+<img width="@Size" height="@Size" src=@iconPath />
+
+@code {
+    [Parameter] public int Size { get; set; }
+    [Parameter] public int IconCode { get; set; }
+
+    string iconPath => IconCode switch
+    {
+        1 or 2 => "/images/weather/icons/day.svg",
+        3 or 4 => "/images/weather/icons/cloudy-day-1.svg",
+        5 or 6 => "/images/weather/icons/cloudy-day-2.svg",
+        7 or 8 or 11 => "/images/weather/icons/cloudy.svg",
+        12 or 13 or 14 => "/images/weather/icons/rainy-1.svg",
+        15 or 16 or 17 => "/images/weather/icons/thunder.svg",
+        18 => "/images/weather/icons/rainy-5.svg",
+        19 => "/images/weather/icons/snowy-3.svg",
+        20 => "/images/weather/icons/snowy-2.svg",
+        21 => "/images/weather/icons/snowy-1.svg",
+        22 => "/images/weather/icons/snowy-6.svg",
+        23 => "/images/weather/icons/snowy-2.svg",
+        24 or 25 => "/images/weather/icons/cloudy.svg",
+        26 => "/images/weather/icons/rainy-6.svg",
+        29 => "/images/weather/icons/rainy-7.svg",
+        30 => "/images/weather/icons/day.svg",
+        31 or 32 => "/images/weather/icons/cloudy.svg",
+        33 or 34 or 35 or 36 or 37 => "/images/weather/icons/night.svg",
+        38 => "/images/weather/icons/cloudy.svg",
+        39 or 40 => "/images/weather/icons/rainy-4.svg",
+        41 or 42 => "/images/weather/icons/thunder.svg",
+        43 or 44 => "/images/weather/icons/snowy-4.svg",
+        _ => "/images/weather/icons/cloudy.svg"
+    };
+}

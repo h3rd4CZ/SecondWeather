@@ -1,10 +1,18 @@
-﻿namespace SecondWeather
+﻿using SecondWeather.Data;
+using SecondWeather.Data.Data;
+
+namespace SecondWeather
 {
     public partial class App : Application
     {
-        public App()
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+
+            using (var scope = serviceProvider.CreateScope())
+            {
+                DatabaseInitializer.Initialize(serviceProvider);
+            }
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

@@ -1,0 +1,28 @@
+﻿@using MudBlazor.Utilities
+@using SecondWeather.Components.Theme
+@using SecondWeather.Services.State
+
+<CascadingValue Value="this">
+    @ChildComponent
+</CascadingValue>
+
+@code {
+
+    [EditorRequired][Parameter] public RenderFragment ChildComponent { get; set; } = default!;
+    public ApplicationState? Value { get; private set; }
+    public event EventHandler<ApplicationState> StateInitialized;
+    public bool stateInitialized;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(1500);
+
+        Value = new ApplicationState
+            {
+                LoadingInProgress = false,
+                WeatherColor = ((MudColor) ColorTheme.DefaultColor).ColorDarken(.25)
+            };
+                    
+        StateInitialized?.Invoke(this, Value);
+    }
+}
